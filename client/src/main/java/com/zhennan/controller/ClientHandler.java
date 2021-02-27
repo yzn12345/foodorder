@@ -27,11 +27,16 @@ public class ClientHandler {
 
     }
 
+    //access layui index.html
     @GetMapping("/redirect/{location}")
     public String redirect(@PathVariable("location") String location){
         return location;
     }
 
-
+    @GetMapping("/deleteById/{id}")
+    public String deleteById(@PathVariable("id") long id) {
+        menuFeign.deleteById(id);
+        return "redirect:/client/redirect/index";
+    }
 
 }
