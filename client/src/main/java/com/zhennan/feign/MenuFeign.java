@@ -2,10 +2,10 @@ package com.zhennan.feign;
 
 import com.zhennan.entity.Menu;
 import com.zhennan.entity.MenuVO;
+import com.zhennan.entity.Type;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -17,4 +17,17 @@ public interface MenuFeign {
 
     @DeleteMapping("/menu/deleteById/{id}")
     public void deleteById(@PathVariable("id") long id);
+
+    @GetMapping("/menu/findTypes")
+    public List<Type> findTypes();
+
+    @PostMapping("/menu/save")
+    public void save(Menu menu);
+
+    @PutMapping("/menu/update")
+    public void update(Menu menu);
+
+    @GetMapping("/menu/findById/{id}")
+    public Menu findById(@PathVariable long id);
+
 }
